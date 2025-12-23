@@ -1,11 +1,10 @@
 import Hero from "../components/Hero";
+import StackedScroll from "../components/StackedScroll";
 import LegalStrip from "../components/LegalStrip";
 import BentoGrid from "../components/BentoGrid";
 import Workflow from "../components/Workflow";
 import VelocityScroll from "../components/VelocityScroll";
-
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&w=1972&q=80";
+import HighlightList from "../components/HighlightList";
 
 const SERVICES_DATA = [
   {
@@ -99,8 +98,10 @@ const SERVICES_DATA = [
 export default function Home() {
   return (
     <main>
-      <Hero imageUrl={HERO_IMAGE} />
+      <Hero />
+      <StackedScroll />
       <LegalStrip />
+      <HighlightList />
       <VelocityScroll />
       <BentoGrid items={SERVICES_DATA} />
       <Workflow />

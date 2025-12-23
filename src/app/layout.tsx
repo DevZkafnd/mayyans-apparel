@@ -4,11 +4,13 @@ import "./globals.css";
 import WhatsAppCTA from "../components/WhatsAppCTA";
 import PageTransition from "../components/PageTransition";
 import Navbar from "../components/Navbar";
+import BrandHeritage from "../components/BrandHeritage";
 import Footer from "../components/Footer";
 import AtmosphereLayer from "../components/AtmosphereLayer";
 import Preloader from "../components/Preloader";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import BackToTop from "../components/BackToTop";
+import AnnouncementBar from "../components/AnnouncementBar";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -53,9 +55,13 @@ export default function RootLayout({
       <body className={`${oswald.variable} ${inter.variable} antialiased`}>
         <Preloader />
         <ScrollProgressBar />
+        <AnnouncementBar />
         <Navbar />
         <PageTransition>{children}</PageTransition>
-        <Footer />
+        <div className="relative z-10 mb-[80vh] bg-neutral-950">
+          <Footer />
+        </div>
+        <BrandHeritage />
         <WhatsAppCTA />
         <AtmosphereLayer />
         <BackToTop />
