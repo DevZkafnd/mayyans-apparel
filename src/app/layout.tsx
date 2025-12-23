@@ -25,21 +25,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"),
-  title: "Mayans Apparel — Konveksi Bandung Terintegrasi",
+  metadataBase: new URL("https://mayans-apparel.vercel.app"),
+  title: "Mayans Apparel | Premium Clothing Manufacturer",
   description:
-    "Spesialis Kaos, Jersey, Seragam, dan Kemeja. Legalitas resmi, workshop sendiri, bergaransi.",
+    "Premium apparel manufacturing and convection services. Specialists in jerseys, t-shirts, uniforms, and corporate wear with high-quality standards.",
   icons: {
     icon: [
       { url: "/logo.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", type: "image/x-icon" },
     ],
     apple: [{ url: "/logo.svg", type: "image/svg+xml" }],
   },
   openGraph: {
     title: "Mayans Apparel",
     description:
-      "Solusi Konveksi & Apparel Terintegrasi. Terdaftar resmi & bergaransi.",
+      "Premium Clothing Manufacturer & Convection Services.",
     images: ["/logo.svg"],
     type: "website",
   },
