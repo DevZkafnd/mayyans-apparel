@@ -2,11 +2,28 @@
 
 import Image from "next/image";
 import { motion, useScroll, useMotionValue, useMotionValueEvent } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function BrandHeritage() {
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const opacity = useMotionValue(0);
+  const [shouldRender, setShouldRender] = useState(true);
+
+  useEffect(() => {
+    // Hide on coming-soon page
+    if (pathname === '/coming-soon') {
+      setShouldRender(false);
+      opacity.set(0);
+    } else {
+      setShouldRender(true);
+      // Recalculate opacity after a brief delay to ensure DOM is ready
+      setTimeout(() => {
+        updateOpacity(window.scrollY);
+      }, 100);
+    }
+  }, [pathname, opacity]);
 
   const updateOpacity = (latestScrollY: number) => {
     if (typeof window === "undefined") return;
@@ -29,13 +46,12 @@ export default function BrandHeritage() {
   };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    updateOpacity(latest);
+    if (shouldRender) {
+      updateOpacity(latest);
+    }
   });
 
-  // Initial check on mount
-  useEffect(() => {
-    updateOpacity(window.scrollY);
-  }, []);
+  if (!shouldRender) return null;
 
   return (
     <section className="fixed bottom-0 left-0 -z-10 h-[80vh] w-full overflow-hidden">
