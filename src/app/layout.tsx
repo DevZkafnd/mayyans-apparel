@@ -11,6 +11,7 @@ import Preloader from "../components/Preloader";
 import ScrollProgressBar from "../components/ScrollProgressBar";
 import BackToTop from "../components/BackToTop";
 import AnnouncementBar from "../components/AnnouncementBar";
+import AntiDevTools from "../components/AntiDevTools";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -64,6 +65,7 @@ export default function RootLayout({
         <WhatsAppCTA />
         <AtmosphereLayer />
         <BackToTop />
+        <AntiDevTools />
       </body>
     </html>
   );
