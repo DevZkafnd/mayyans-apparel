@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section className="relative isolate h-screen overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-neutral-950 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 min-h-full min-w-full w-[300vh] h-[100vw] -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.35]">
+        <div className="absolute top-1/2 left-1/2 min-h-full min-w-full w-[300vh] h-[100vw] md:w-[177vh] md:h-[100vw] -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.35] md:scale-110">
           <iframe
             src="https://www.youtube.com/embed/9zLN7gSwq_Q?autoplay=1&mute=1&controls=0&loop=1&playlist=9zLN7gSwq_Q&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&enablejsapi=1&origin=http://localhost:3000"
             title="Mayans Apparel Video"
@@ -23,14 +23,14 @@ export default function Hero() {
         
         <motion.div
           style={{ y }}
-          className="pointer-events-none absolute right-[-10%] top-[20%] -z-10"
+          className="pointer-events-none absolute right-[-10%] top-[20%] -z-10 opacity-20 sm:opacity-10"
         >
           <Image
             src="/logo.svg"
             alt=""
             width={700}
             height={700}
-            className="h-[700px] w-auto opacity-5 rotate-[-15deg]"
+            className="h-[300px] w-auto sm:h-[500px] md:h-[700px] rotate-[-15deg]"
           />
         </motion.div>
       </div>

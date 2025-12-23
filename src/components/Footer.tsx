@@ -43,23 +43,23 @@ const FOOTER_LINKS = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-neutral-800 bg-neutral-950 pt-16 pb-8">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
+    <footer className="border-t border-neutral-800 bg-neutral-950 pt-12 pb-8 md:pt-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5 lg:gap-8">
           {/* Navigation Columns */}
           <div className="lg:col-span-4">
-            <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
               {Object.values(FOOTER_LINKS).map((section) => (
                 <div key={section.title}>
                   <h3 className="text-sm font-semibold tracking-wider text-white">
                     {section.title}
                   </h3>
-                  <ul className="mt-4 space-y-3">
+                  <ul className="mt-4 space-y-2 sm:space-y-3">
                     {section.links.map((link) => (
                       <li key={link.label}>
                         <Link
                           href={link.href}
-                          className="text-sm text-neutral-400 transition-colors hover:text-white"
+                          className="text-xs sm:text-sm text-neutral-400 transition-colors hover:text-white"
                         >
                           {link.label}
                         </Link>
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
 
           {/* Social & Logo Column */}
-          <div className="flex flex-col gap-6 lg:items-start">
+          <div className="flex flex-col gap-6 lg:items-start border-t border-neutral-800 pt-8 lg:border-0 lg:pt-0">
             <Link href="/" className="block">
               <Image
                 src="/logo.svg"
@@ -130,12 +130,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-16 border-t border-neutral-800 pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-neutral-400">
+        <div className="mt-12 md:mt-16 border-t border-neutral-800 pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row text-center md:text-left">
+            <p className="text-xs sm:text-sm text-neutral-400">
               &copy; {new Date().getFullYear()} Mayans Apparel. All rights reserved.
             </p>
-            <p className="text-xs text-neutral-500">
+            <p className="text-[10px] sm:text-xs text-neutral-500">
               IDM Reg. No. 000928xxx • NIB 1902202xxx
             </p>
           </div>

@@ -25,8 +25,8 @@ export default function AnnouncementBar() {
   }, [isPlaying]);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] bg-neutral-900 text-white text-xs tracking-wider h-[40px]">
-      <div className="mx-auto max-w-7xl px-6 h-full">
+    <div className="fixed top-0 left-0 right-0 z-[60] bg-neutral-900 text-white text-[10px] sm:text-xs tracking-wider h-[40px]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 h-full">
         <div className="relative flex items-center justify-center h-full">
           <button
             onClick={() => setIsPlaying(!isPlaying)}
@@ -40,7 +40,7 @@ export default function AnnouncementBar() {
             )}
           </button>
 
-          <div className="relative h-5 w-full overflow-hidden text-center">
+          <div className="relative h-5 w-full overflow-hidden text-center px-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -50,7 +50,7 @@ export default function AnnouncementBar() {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <span className="font-medium uppercase">
+                <span className="font-medium uppercase line-clamp-1">
                   {ANNOUNCEMENTS[currentIndex]}
                 </span>
               </motion.div>
