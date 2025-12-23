@@ -1,0 +1,50 @@
+"use client";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+
+export default function Preloader() {
+  const [progress, setProgress] = useState(0);
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    let p = 0;
+    const start = performance.now();
+    const duration = 1800;
+    let raf = 0;
+    function tick(now: number) {
+      const t = Math.min(1, (now - start) / duration);
+      p = Math.floor(t * 100);
+      setProgress(p);
+      if (t < 1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        setTimeout(() => setDone(true), 300);
+      }
+    }
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {!done && (
+        <motion.div
+          initial={{ y: 0 }}
+          animate={{ y: 0 }}
+          exit={{ y: "-100%" }}
+          transition={{ type: "spring", stiffness: 260, damping: 24 }}
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="font-display text-6xl text-paper-white"
+          >
+            {progress}%
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
