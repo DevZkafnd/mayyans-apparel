@@ -30,22 +30,7 @@ export default function AntiDevTools() {
     };
 
     // 3. Aggressive DevTools Detection
-    const detectDevTools = () => {
-      const widthThreshold = window.outerWidth - window.innerWidth > 160;
-      const heightThreshold = window.outerHeight - window.innerHeight > 160;
-      
-      if (widthThreshold || heightThreshold) {
-        // Potential DevTools detected via window size (docked)
-      }
-
-      // Debugger Trap
-      const start = performance.now();
-      // eslint-disable-next-line no-debugger
-      debugger; 
-      const end = performance.now();
-      
-      if (end - start > 100) {
-        // User paused! (DevTools Open)
+    const triggerLockout = () => {
         document.body.innerHTML = `
           <div style="
             position: fixed;
@@ -79,6 +64,26 @@ export default function AntiDevTools() {
           </div>
         `;
         throw new Error("Security Violation: DevTools Detected");
+    };
+
+    const detectDevTools = () => {
+      const widthThreshold = window.outerWidth - window.innerWidth > 160;
+      const heightThreshold = window.outerHeight - window.innerHeight > 160;
+      
+      if (widthThreshold || heightThreshold) {
+        // Potential DevTools detected via window size (docked)
+        triggerLockout();
+      }
+
+      // Debugger Trap
+      const start = performance.now();
+      // eslint-disable-next-line no-debugger
+      debugger; 
+      const end = performance.now();
+      
+      if (end - start > 100) {
+        // User paused! (DevTools Open)
+        triggerLockout();
       }
     };
 
@@ -98,24 +103,21 @@ export default function AntiDevTools() {
 
     // Run checks frequently
     const intervalId = setInterval(() => {
-        detectDevTools();
-        consoleTrap();
-    }, 500); // Check every 500ms
+      detectDevTools();
+      consoleTrap();
+    }, 500);
 
-    // Add listeners
+    // Additional check on resize
+    window.addEventListener('resize', detectDevTools);
+    
     document.addEventListener("contextmenu", handleContextMenu);
     document.addEventListener("keydown", handleKeyDown);
-    
-    // Disable selection
-    document.onselectstart = () => false;
-    document.ondragstart = () => false;
 
     return () => {
+      clearInterval(intervalId);
       document.removeEventListener("contextmenu", handleContextMenu);
       document.removeEventListener("keydown", handleKeyDown);
-      document.onselectstart = null;
-      document.ondragstart = null;
-      clearInterval(intervalId);
+      window.removeEventListener('resize', detectDevTools);
     };
   }, []);
 
