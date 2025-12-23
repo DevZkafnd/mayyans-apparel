@@ -32,76 +32,83 @@ export default function AntiDevTools() {
     // 3. Aggressive DevTools Detection
     const triggerLockout = () => {
         try {
+            // Prevent multiple triggers
+            if (document.getElementById('anti-devtools-lockout')) return;
+
             // 1. Stop all execution and network
             window.stop();
             
-            // 2. Clear Storage
+            // 2. Clear Storage & Cookies
             try {
                 localStorage.clear();
                 sessionStorage.clear();
-                document.cookie.split(";").forEach((c) => {
-                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-                });
-            } catch (e) {
-                // Ignore storage errors
-            }
+                const cookies = document.cookie.split(";");
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i];
+                    const eqPos = cookie.indexOf("=");
+                    const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+                }
+            } catch (e) { /* ignore */ }
 
-            // 3. Nuke the DOM completely (Head + Body) to hide assets
-            document.documentElement.innerHTML = '';
+            // 3. Nuke DOM (Head & Body)
+            document.head.innerHTML = '';
+            document.body.innerHTML = '';
+
+            // 4. Create Safe Lockout UI
+            const lockoutDiv = document.createElement('div');
+            lockoutDiv.id = 'anti-devtools-lockout';
+            lockoutDiv.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                background: #000; color: #ff0000; display: flex; flex-direction: column;
+                justify-content: center; align-items: center; z-index: 2147483647;
+                font-family: monospace; text-align: center; overflow: hidden;
+            `;
+            lockoutDiv.innerHTML = `
+                <h1 style="font-size: 2rem; margin-bottom: 1.5rem; line-height: 1.4;">Mau nyari apa sii mass/mba??<br/>mending sini ngobrol sama aku di dm ig @zkafnd, oke?</h1>
+                <button id="reload-btn" style="
+                    margin-top: 2rem; padding: 1rem 2rem; background: #ff0000;
+                    color: white; border: none; font-family: monospace;
+                    cursor: pointer; font-size: 1.2rem; border-radius: 8px;
+                ">MAAF SAYA KHILAF</button>
+            `;
+            document.body.appendChild(lockoutDiv);
             
-            // 4. Re-render only the warning
-            document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>ACCESS DENIED</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <style>
-                        body {
-                            background: #000;
-                            color: #ff0000;
-                            height: 100vh;
-                            width: 100vw;
-                            margin: 0;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                            font-family: monospace;
-                            text-align: center;
-                            overflow: hidden;
-                        }
-                        h1 { font-size: 2rem; margin-bottom: 1.5rem; line-height: 1.4; }
-                        button {
-                            margin-top: 2rem;
-                            padding: 1rem 2rem;
-                            background: #ff0000;
-                            color: white;
-                            border: none;
-                            font-family: monospace;
-                            cursor: pointer;
-                            font-size: 1.2rem;
-                            border-radius: 8px;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <h1>Mau nyari apa sii mass/mba??<br/>mending sini ngobrol sama aku di dm ig @zkafnd, oke?</h1>
-                    <button onclick="window.location.reload()">MAAF SAYA KHILAF</button>
-                    <script>
-                        // Trap everything
-                        setInterval(() => { debugger; }, 50);
-                        window.stop();
-                    </script>
-                </body>
-                </html>
-            `);
-            document.close();
-            
+            document.getElementById('reload-btn')?.addEventListener('click', () => window.location.reload());
+
+            // 5. Remove Attributes
+            document.documentElement.className = '';
+            document.documentElement.style.cssText = '';
+            document.body.className = '';
+            document.body.style.cssText = 'overflow: hidden; margin: 0;';
+
+            // 6. TRAP: MutationObserver (Anti-Delete)
+            // If they try to delete the lockout div, reload immediately
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (!document.getElementById('anti-devtools-lockout')) {
+                        window.location.reload();
+                    }
+                });
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            // 7. TRAP: Debugger Loop (Freeze DevTools)
+            setInterval(() => {
+                // eslint-disable-next-line no-debugger
+                debugger;
+            }, 50);
+
+            // 8. TRAP: Console Clear Loop
+            setInterval(() => {
+                console.clear();
+                console.log("%cMAU NGAPAIN HAYOO?? 👀", "color: red; font-size: 50px; font-weight: bold;");
+            }, 100);
+
             throw new Error("Security Violation: DevTools Detected");
         } catch (e) {
-            // Fallback if document.write fails (e.g. strict CSP)
-             document.documentElement.innerHTML = 'Access Denied';
+            // Fallback
+             document.body.innerHTML = 'Access Denied';
              window.location.reload();
         }
     };
