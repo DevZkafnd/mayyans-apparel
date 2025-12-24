@@ -32,10 +32,7 @@ export const metadata: Metadata = {
   description:
     "Premium apparel manufacturing and convection services. Specialists in jerseys, t-shirts, uniforms, and corporate wear with high-quality standards.",
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" },
-      { url: "/logo.webp", type: "image/webp", sizes: "32x32" },
-    ],
+    icon: [{ url: "/logo.webp", type: "image/webp" }],
     apple: [{ url: "/logo.webp", type: "image/webp" }],
   },
   openGraph: {
