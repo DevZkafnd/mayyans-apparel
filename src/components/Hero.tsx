@@ -27,7 +27,7 @@ export default function Hero() {
           className="pointer-events-none absolute right-[-10%] top-[20%] -z-10 opacity-20 sm:opacity-10"
         >
           <Image
-            src="/logo.svg"
+            src="/logo.webp"
             alt=""
             width={700}
             height={700}

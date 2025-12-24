@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="inline-flex items-center pl-6 md:pl-0">
             <Image
-              src="/logo.svg"
+              src="/logo.webp"
               alt="Mayans Apparel"
               width={144}
               height={48}
@@ -89,7 +89,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between mb-8">
                 <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                   <Image
-                    src="/logo.svg"
+                    src="/logo.webp"
                     alt="Mayans Apparel"
                     width={120}
                     height={40}

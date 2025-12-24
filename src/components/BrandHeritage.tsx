@@ -75,7 +75,7 @@ export default function BrandHeritage() {
       >
         <div className="w-full max-w-[300px] md:max-w-[500px] px-6">
           <Image
-            src="/logo.svg"
+            src="/logo.webp"
             alt="Mayans Apparel"
             width={500}
             height={200}

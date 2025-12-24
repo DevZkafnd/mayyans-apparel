@@ -18,9 +18,14 @@ export default function LegalStrip() {
             <AnimatedItem>
               <div className="flex items-center gap-3 rounded-lg border border-neutral-800 bg-black/50 px-4 py-3 text-white backdrop-blur-sm">
                 <MapPin strokeWidth={2} className="text-mayans-red" />
-                <p className="text-sm font-medium">
-                  Workshop Milik Sendiri • Bandung Kulon
-                </p>
+                <div className="flex flex-col">
+                  <p className="text-sm font-medium">
+                    Workshop Milik Sendiri
+                  </p>
+                  <p className="text-xs text-white/80">
+                    Jl. Cempaka Putih Utara No.19, RT.6/RW.9, Harapan Mulya, Kec. Kemayoran, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10640
+                  </p>
+                </div>
               </div>
             </AnimatedItem>
           </div>

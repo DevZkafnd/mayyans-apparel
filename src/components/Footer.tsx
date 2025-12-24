@@ -75,7 +75,7 @@ export default function Footer() {
           <div className="flex flex-col gap-6 lg:items-start border-t border-neutral-800 pt-8 lg:border-0 lg:pt-0">
             <Link href="/" className="block">
               <Image
-                src="/logo.svg"
+                src="/logo.webp"
                 alt="Mayans Apparel"
                 width={124}
                 height={32}

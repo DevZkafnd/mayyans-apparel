@@ -33,15 +33,15 @@ export const metadata: Metadata = {
     "Premium apparel manufacturing and convection services. Specialists in jerseys, t-shirts, uniforms, and corporate wear with high-quality standards.",
   icons: {
     icon: [
-      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/logo.webp", type: "image/webp" },
     ],
-    apple: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/logo.webp", type: "image/webp" }],
   },
   openGraph: {
     title: "Mayans Apparel",
     description:
       "Premium Clothing Manufacturer & Convection Services.",
-    images: ["/logo.svg"],
+    images: ["/logo.webp"],
     type: "website",
   },
 };

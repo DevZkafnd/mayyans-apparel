@@ -20,7 +20,7 @@ export default function ComingSoon() {
         {/* Logo */}
         <div className="mb-12 w-48 md:w-64">
           <Image
-            src="/logo.svg"
+            src="/logo.webp"
             alt="Mayans Apparel"
             width={300}
             height={100}
