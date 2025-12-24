@@ -77,12 +77,12 @@ export default function ProductModal({
             ✕
           </button>
           <div className="relative">
-            <motion.div layoutId={`image-${product.id}`} className="relative aspect-square sm:h-[420px] sm:aspect-auto w-full overflow-hidden rounded-xl bg-neutral-800">
+            <motion.div layoutId={`image-${product.id}`} className="relative w-full h-[360px] sm:h-[440px] md:h-[520px] overflow-hidden rounded-xl bg-neutral-800 flex items-center justify-center">
               <Image
                 src={gallery[idx]}
                 alt={product.title}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="(min-width: 1280px) 640px, (min-width: 768px) 50vw, 100vw"
                 priority
               />
@@ -171,20 +171,20 @@ export default function ProductModal({
                 <span>Lihat Size Chart</span>
                 <span className="group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="mt-3 overflow-x-auto">
-                <table className="w-full text-left text-xs min-w-[200px]">
-                  <thead className="text-white/60 border-b border-white/10">
+              <div className="mt-3 overflow-x-auto flex justify-center">
+                <table className="w-auto text-xs min-w-[260px] mx-auto">
+                  <thead className="text-white/60 border-b border-white/10 text-center md:text-left">
                     <tr>
-                      <th className="py-2">Size</th>
+                      <th className="py-2 md:text-left">Size</th>
                       <th className="py-2">Lebar (cm)</th>
                       <th className="py-2">Panjang (cm)</th>
                     </tr>
                   </thead>
-                  <tbody className="text-white/85">
-                    <tr><td className="py-1">S</td><td>48</td><td>68</td></tr>
-                    <tr><td className="py-1">M</td><td>50</td><td>70</td></tr>
-                    <tr><td className="py-1">L</td><td>52</td><td>72</td></tr>
-                    <tr><td className="py-1">XL</td><td>54</td><td>74</td></tr>
+                  <tbody className="text-white/85 text-center md:text-left">
+                    <tr><td className="py-1 md:text-left">S</td><td>48</td><td>68</td></tr>
+                    <tr><td className="py-1 md:text-left">M</td><td>50</td><td>70</td></tr>
+                    <tr><td className="py-1 md:text-left">L</td><td>52</td><td>72</td></tr>
+                    <tr><td className="py-1 md:text-left">XL</td><td>54</td><td>74</td></tr>
                   </tbody>
                 </table>
               </div>
