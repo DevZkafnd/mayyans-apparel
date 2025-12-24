@@ -50,7 +50,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 28, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 260, damping: 24, delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl font-display font-bold tracking-wide text-paper-white text-center sm:text-left max-w-4xl"
+            className="text-4xl sm:text-6xl md:text-7xl font-display font-bold tracking-wide text-paper-white text-left max-w-4xl"
           >
             SOLUSI KONVEKSI & APPAREL TERINTEGRASI
           </motion.h1>
@@ -58,26 +58,26 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 24, delay: 0.2 }}
-            className="mt-6 max-w-2xl text-paper-white/85 text-center sm:text-left space-y-2"
+            className="mt-6 max-w-2xl text-paper-white/85 text-left space-y-4"
           >
-            <p className="text-lg sm:text-xl">
+            <p className="text-lg sm:text-xl font-medium">
               Dari Desain Sampai Produk Siap Pakai
             </p>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5">
-              <Shirt className="h-5 w-5 text-mayans-red" aria-hidden="true" />
-              <span className="text-sm sm:text-base leading-tight">
+            <div className="flex items-start justify-start gap-3">
+              <Shirt className="h-5 w-5 text-mayans-red mt-1 shrink-0" aria-hidden="true" />
+              <span className="text-sm sm:text-base leading-relaxed">
                 Kaos • Jersey • Seragam • Kemeja
               </span>
             </div>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5">
-              <ShieldCheck className="h-5 w-5 text-mayans-red" aria-hidden="true" />
-              <span className="text-sm sm:text-base leading-tight">
+            <div className="flex items-start justify-start gap-3">
+              <ShieldCheck className="h-5 w-5 text-mayans-red mt-1 shrink-0" aria-hidden="true" />
+              <span className="text-sm sm:text-base leading-relaxed text-justify">
                 Partner produksi apparel terpercaya dengan garansi kualitas.
               </span>
             </div>
-            <div className="flex items-center justify-center sm:justify-start gap-1.5">
-              <PhoneCall className="h-5 w-5 text-mayans-red" aria-hidden="true" />
-              <span className="text-sm sm:text-base leading-tight">
+            <div className="flex items-start justify-start gap-3">
+              <PhoneCall className="h-5 w-5 text-mayans-red mt-1 shrink-0" aria-hidden="true" />
+              <span className="text-sm sm:text-base leading-relaxed">
                 Hubungi Kami Sekarang untuk Estimasi Gratis!
               </span>
             </div>
