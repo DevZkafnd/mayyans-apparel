@@ -6,7 +6,7 @@ type VelocityScrollProps = {
 };
 
 export default function VelocityScroll({
-  text = "🔥 RECENT ORDER: 1.200 PCS JERSEY - BANK BRI JAKARTA • 500 PCS KEMEJA - PT TELKOM AKSES • 300 PCS ROMPI - KOMUNITAS MOTOR BANDUNG •",
+  text = "🔥 RECENT ORDER: 1.200 PCS JERSEY - BANK BRI JAKARTA • 300 PCS ROMPI - KOMUNITAS MOTOR BANDUNG •",
 }: VelocityScrollProps) {
   const baseSpeed = 40;
   const { scrollY } = useScroll();
