@@ -5,6 +5,11 @@ import { useEffect } from "react";
 export default function AntiDevTools() {
   useEffect(() => {
     if (process.env.NODE_ENV === "development") return; // Optional: Allow in dev mode
+    const isMobile =
+      (typeof navigator !== "undefined" && navigator.maxTouchPoints > 0) ||
+      (typeof window !== "undefined" && window.matchMedia && window.matchMedia("(pointer: coarse)").matches) ||
+      (typeof window !== "undefined" && window.innerWidth < 768);
+    if (isMobile) return;
 
     // 1. Disable Right Click
     const handleContextMenu = (e: MouseEvent) => {
@@ -107,7 +112,7 @@ export default function AntiDevTools() {
     const intervalId = setInterval(() => {
       detectDevTools();
       consoleTrap();
-    }, 500);
+    }, 1500);
 
     // Additional check on resize
     window.addEventListener('resize', detectDevTools);
