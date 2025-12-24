@@ -32,6 +32,7 @@ export default function ProductModal({
     { name: "Benzema", desc: "Tekstur unik, kuat dan nyaman." },
   ];
   const [mat, setMat] = useState<Material>(mats[0]);
+  const [sizeOpen, setSizeOpen] = useState(false);
 
   const waText = useMemo(() => {
     const base = `Halo Mayans, saya tertarik dengan ${product.title}. Info untuk bahan ${mat.name} dan price list?`;
@@ -77,12 +78,15 @@ export default function ProductModal({
             ✕
           </button>
           <div className="relative">
-            <motion.div layoutId={`image-${product.id}`} className="relative w-full h-[360px] sm:h-[440px] md:h-[520px] overflow-hidden rounded-xl bg-neutral-800 flex items-center justify-center">
+            <motion.div 
+              layoutId={`image-${product.id}`} 
+              className={`relative w-full h-[360px] sm:h-[440px] md:h-[520px] overflow-hidden rounded-xl bg-neutral-800 flex items-center ${sizeOpen ? 'justify-start' : 'justify-center'}`}
+            >
               <Image
                 src={gallery[idx]}
                 alt={product.title}
                 fill
-                className="object-cover object-center"
+                className={`object-cover ${sizeOpen ? 'object-left' : 'object-center'}`}
                 sizes="(min-width: 1280px) 640px, (min-width: 768px) 50vw, 100vw"
                 priority
               />
@@ -166,25 +170,28 @@ export default function ProductModal({
               </div>
             )}
 
-            <details className="mt-6 rounded-lg border border-white/10 bg-white/5 p-3 group">
+            <details 
+              className="mt-6 rounded-lg border border-white/10 bg-white/5 p-3 group"
+              onToggle={(e) => setSizeOpen((e.currentTarget as HTMLDetailsElement).open)}
+            >
               <summary className="cursor-pointer text-sm font-medium flex items-center justify-between">
                 <span>Lihat Size Chart</span>
                 <span className="group-open:rotate-180 transition-transform">▼</span>
               </summary>
-              <div className="mt-3 overflow-x-auto flex justify-center">
-                <table className="w-auto text-xs min-w-[260px] mx-auto">
-                  <thead className="text-white/60 border-b border-white/10 text-center md:text-left">
+              <div className={`mt-3 overflow-x-auto flex ${sizeOpen ? 'justify-start' : 'justify-center'}`}>
+                <table className={`w-auto text-xs min-w-[260px] ${sizeOpen ? '' : 'mx-auto'}`}>
+                  <thead className={`text-white/60 border-b border-white/10 ${sizeOpen ? 'text-left' : 'text-center md:text-left'}`}>
                     <tr>
-                      <th className="py-2 md:text-left">Size</th>
+                      <th className={`py-2 ${sizeOpen ? '' : 'md:text-left'}`}>Size</th>
                       <th className="py-2">Lebar (cm)</th>
                       <th className="py-2">Panjang (cm)</th>
                     </tr>
                   </thead>
-                  <tbody className="text-white/85 text-center md:text-left">
-                    <tr><td className="py-1 md:text-left">S</td><td>48</td><td>68</td></tr>
-                    <tr><td className="py-1 md:text-left">M</td><td>50</td><td>70</td></tr>
-                    <tr><td className="py-1 md:text-left">L</td><td>52</td><td>72</td></tr>
-                    <tr><td className="py-1 md:text-left">XL</td><td>54</td><td>74</td></tr>
+                  <tbody className={`text-white/85 ${sizeOpen ? 'text-left' : 'text-center md:text-left'}`}>
+                    <tr><td className={`py-1 ${sizeOpen ? '' : 'md:text-left'}`}>S</td><td>48</td><td>68</td></tr>
+                    <tr><td className={`py-1 ${sizeOpen ? '' : 'md:text-left'}`}>M</td><td>50</td><td>70</td></tr>
+                    <tr><td className={`py-1 ${sizeOpen ? '' : 'md:text-left'}`}>L</td><td>52</td><td>72</td></tr>
+                    <tr><td className={`py-1 ${sizeOpen ? '' : 'md:text-left'}`}>XL</td><td>54</td><td>74</td></tr>
                   </tbody>
                 </table>
               </div>
