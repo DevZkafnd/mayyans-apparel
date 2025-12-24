@@ -1,6 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { Shirt, ShieldCheck, PhoneCall } from "lucide-react";
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -53,15 +54,34 @@ export default function Hero() {
           >
             SOLUSI KONVEKSI & APPAREL TERINTEGRASI
           </motion.h1>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 24, delay: 0.2 }}
-            className="mt-6 max-w-2xl text-lg sm:text-xl text-paper-white/85 text-center sm:text-left"
+            className="mt-6 max-w-2xl text-paper-white/85 text-center sm:text-left space-y-3"
           >
-            Spesialis pembuatan Kaos, Jersey, Seragam, dan Kemeja. Terdaftar resmi
-            dan bergaransi.
-          </motion.p>
+            <p className="text-lg sm:text-xl">
+              Dari Desain Sampai Produk Siap Pakai
+            </p>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <Shirt className="h-5 w-5 text-mayans-red" aria-hidden="true" />
+              <span className="text-sm sm:text-base">
+                Kaos • Jersey • Seragam • Kemeja
+              </span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <ShieldCheck className="h-5 w-5 text-mayans-red" aria-hidden="true" />
+              <span className="text-sm sm:text-base">
+                Partner produksi apparel terpercaya dengan garansi kualitas.
+              </span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start gap-2">
+              <PhoneCall className="h-5 w-5 text-mayans-red" aria-hidden="true" />
+              <span className="text-sm sm:text-base">
+                Hubungi Kami Sekarang untuk Estimasi Gratis!
+              </span>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

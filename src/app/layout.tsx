@@ -12,6 +12,7 @@ import ScrollProgressBar from "../components/ScrollProgressBar";
 import BackToTop from "../components/BackToTop";
 import AnnouncementBar from "../components/AnnouncementBar";
 import AntiDevTools from "../components/AntiDevTools";
+import IntroNotification from "../components/IntroNotification";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -58,6 +59,7 @@ export default function RootLayout({
         <AnnouncementBar />
         <Navbar />
         <PageTransition>{children}</PageTransition>
+        <IntroNotification />
         <div className="relative z-10 mb-[80vh] bg-neutral-950">
           <Footer />
         </div>

@@ -23,7 +23,7 @@ export default function ProductModal({
   product: Product;
   onClose: () => void;
 }) {
-  const PHONE_NUMBER = "6285880225306";
+  const PHONE_NUMBER = "6287848722051";
   const gallery = product.gallery?.length ? product.gallery : [product.image];
   const [idx, setIdx] = useState(0);
   const mats = product.materials ?? [

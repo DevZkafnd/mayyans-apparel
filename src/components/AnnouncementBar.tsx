@@ -5,9 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Pause, Play } from "lucide-react";
 
 const ANNOUNCEMENTS = [
-  "Gratis Ongkir se-Indonesia untuk pemesanan di atas 50 pcs!",
+  "Gratis Ongkir se-jabodetabek untuk pesanan diatas 100 pcs!",
   "Diskon 10% untuk pelanggan baru dengan kode: MAYANSNEW",
-  "Garansi 100% uang kembali jika hasil tidak sesuai pesanan.",
+  "Garansi kualitas dengan acc sample jadi!",
+  "Gratis Design dan Sample untuk pemesan serius / sudah DP!",
 ];
 
 export default function AnnouncementBar() {

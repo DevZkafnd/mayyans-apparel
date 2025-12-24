@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 
-const PHONE_NUMBER = "6285880225306";
+const PHONE_NUMBER = "6287848722051";
 const MESSAGE = encodeURIComponent("Halo Mayans Apparel, saya ingin konsultasi konveksi.");
 
 export default function WhatsAppCTA() {
