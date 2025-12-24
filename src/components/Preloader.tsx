@@ -10,8 +10,14 @@ export default function Preloader() {
 
   useEffect(() => {
     const hasRunInitial = typeof window !== "undefined" && sessionStorage.getItem("hasRunInitial") === "true";
+    // Run on homepage OR if it's the very first visit to the site
     const shouldRun = pathname === "/" || !hasRunInitial;
+
     if (shouldRun) {
+      // Reset state to ensure preloader shows again when navigating back to home
+      setDone(false);
+      setProgress(0);
+
       if (typeof window !== "undefined") {
         sessionStorage.setItem("hasRunInitial", "true");
       }
