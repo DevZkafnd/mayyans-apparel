@@ -37,7 +37,7 @@ export default function Navbar() {
               width={144}
               height={48}
               priority
-              className="h-10 w-auto md:h-12 object-contain invert"
+              className="h-10 w-auto md:h-12 object-contain"
             />
           </Link>
 
@@ -93,7 +93,7 @@ export default function Navbar() {
                     alt="Mayans Apparel"
                     width={120}
                     height={40}
-                    className="h-10 w-auto object-contain invert"
+                    className="h-10 w-auto object-contain"
                   />
                 </Link>
                 <button 

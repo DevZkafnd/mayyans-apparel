@@ -24,7 +24,7 @@ export default function ComingSoon() {
             alt="Mayans Apparel"
             width={300}
             height={100}
-            className="w-full h-auto object-contain invert drop-shadow-2xl"
+            className="w-full h-auto object-contain"
           />
         </div>
 

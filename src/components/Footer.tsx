@@ -79,7 +79,7 @@ export default function Footer() {
                 alt="Mayans Apparel"
                 width={124}
                 height={32}
-                className="h-8 w-auto object-contain invert brightness-200"
+                className="h-8 w-auto object-contain"
               />
             </Link>
             

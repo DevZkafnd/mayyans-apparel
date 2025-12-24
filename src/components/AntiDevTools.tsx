@@ -80,7 +80,6 @@ export default function AntiDevTools() {
 
       // Debugger Trap
       const start = performance.now();
-      // eslint-disable-next-line no-debugger
       debugger; 
       const end = performance.now();
       

@@ -30,22 +30,22 @@ export default function VelocityScroll({
           className="whitespace-nowrap opacity-20"
           style={{ x }}
         >
-          <span className="mr-12 font-display text-8xl uppercase tracking-widest">
+          <span className="mr-12 font-display text-4xl sm:text-6xl lg:text-8xl uppercase tracking-widest">
             {text}
           </span>
-          <span className="mr-12 font-display text-8xl uppercase tracking-widest">
+          <span className="mr-12 font-display text-4xl sm:text-6xl lg:text-8xl uppercase tracking-widest">
             {text}
           </span>
-          <span className="mr-12 font-display text-8xl uppercase tracking-widest">
+          <span className="mr-12 font-display text-4xl sm:text-6xl lg:text-8xl uppercase tracking-widest">
             {text}
           </span>
-          <span className="mr-12 font-display text-8xl uppercase tracking-widest">
+          <span className="mr-12 font-display text-4xl sm:text-6xl lg:text-8xl uppercase tracking-widest">
             {text}
           </span>
-          <span className="mr-12 font-display text-8xl uppercase tracking-widest">
+          <span className="mr-12 font-display text-4xl sm:text-6xl lg:text-8xl uppercase tracking-widest">
             {text}
           </span>
-          <span className="mr-12 font-display text-8xl uppercase tracking-widest">
+          <span className="mr-12 font-display text-4xl sm:text-6xl lg:text-8xl uppercase tracking-widest">
             {text}
           </span>
         </motion.div>

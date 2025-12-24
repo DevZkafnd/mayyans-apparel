@@ -2,30 +2,16 @@
 
 import Image from "next/image";
 import { motion, useScroll, useMotionValue, useMotionValueEvent } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
 
 export default function BrandHeritage() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const opacity = useMotionValue(0);
-  const [shouldRender, setShouldRender] = useState(true);
+  const shouldRender = pathname !== '/coming-soon';
 
-  useEffect(() => {
-    // Hide on coming-soon page
-    if (pathname === '/coming-soon') {
-      setShouldRender(false);
-      opacity.set(0);
-    } else {
-      setShouldRender(true);
-      // Recalculate opacity after a brief delay to ensure DOM is ready
-      setTimeout(() => {
-        updateOpacity(window.scrollY);
-      }, 100);
-    }
-  }, [pathname, opacity]);
-
-  const updateOpacity = (latestScrollY: number) => {
+  const updateOpacity = useCallback((latestScrollY: number) => {
     if (typeof window === "undefined") return;
 
     const windowHeight = window.innerHeight;
@@ -33,17 +19,23 @@ export default function BrandHeritage() {
     const scrollPosition = latestScrollY + windowHeight;
     const distanceToBottom = documentHeight - scrollPosition;
 
-    // Trigger fade in when approaching the bottom
-    // The reveal section is 80vh. Let's start fading in when we are 50% into the reveal.
     const triggerDistance = windowHeight * 0.5;
 
     let newOpacity = 1 - distanceToBottom / triggerDistance;
-    // Clamp between 0 and 1
     newOpacity = Math.max(0, Math.min(1, newOpacity));
-    
-    // Apply easing if desired, but linear is fine for opacity
     opacity.set(newOpacity);
-  };
+  }, [opacity]);
+
+  useEffect(() => {
+    if (!shouldRender) {
+      opacity.set(0);
+    } else {
+      // Recalculate opacity after a brief delay to ensure DOM is ready
+      setTimeout(() => {
+        updateOpacity(window.scrollY);
+      }, 100);
+    }
+  }, [pathname, opacity, updateOpacity, shouldRender]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (shouldRender) {
@@ -79,7 +71,7 @@ export default function BrandHeritage() {
             alt="Mayans Apparel"
             width={500}
             height={200}
-            className="w-full h-auto object-contain invert drop-shadow-lg"
+            className="w-full h-auto object-contain"
           />
         </div>
       </motion.div>

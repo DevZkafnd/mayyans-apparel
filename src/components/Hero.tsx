@@ -58,26 +58,26 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 24, delay: 0.2 }}
-            className="mt-6 max-w-2xl text-paper-white/85 text-center sm:text-left space-y-3"
+            className="mt-6 max-w-2xl text-paper-white/85 text-center sm:text-left space-y-2"
           >
             <p className="text-lg sm:text-xl">
               Dari Desain Sampai Produk Siap Pakai
             </p>
-            <div className="flex items-center justify-center sm:justify-start gap-2">
+            <div className="flex items-center justify-center sm:justify-start gap-1.5">
               <Shirt className="h-5 w-5 text-mayans-red" aria-hidden="true" />
-              <span className="text-sm sm:text-base">
+              <span className="text-sm sm:text-base leading-tight">
                 Kaos • Jersey • Seragam • Kemeja
               </span>
             </div>
-            <div className="flex items-center justify-center sm:justify-start gap-2">
+            <div className="flex items-center justify-center sm:justify-start gap-1.5">
               <ShieldCheck className="h-5 w-5 text-mayans-red" aria-hidden="true" />
-              <span className="text-sm sm:text-base">
+              <span className="text-sm sm:text-base leading-tight">
                 Partner produksi apparel terpercaya dengan garansi kualitas.
               </span>
             </div>
-            <div className="flex items-center justify-center sm:justify-start gap-2">
+            <div className="flex items-center justify-center sm:justify-start gap-1.5">
               <PhoneCall className="h-5 w-5 text-mayans-red" aria-hidden="true" />
-              <span className="text-sm sm:text-base">
+              <span className="text-sm sm:text-base leading-tight">
                 Hubungi Kami Sekarang untuk Estimasi Gratis!
               </span>
             </div>

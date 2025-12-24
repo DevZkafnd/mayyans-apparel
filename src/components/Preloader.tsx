@@ -7,14 +7,14 @@ export default function Preloader() {
   const pathname = usePathname();
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
-  const [hasRunInitial, setHasRunInitial] = useState(false);
 
   useEffect(() => {
-    // Run preloader if it's the homepage OR if it's the very first load of the session
-    if (pathname === "/" || !hasRunInitial) {
-      setDone(false);
-      setProgress(0);
-      setHasRunInitial(true);
+    const hasRunInitial = typeof window !== "undefined" && sessionStorage.getItem("hasRunInitial") === "true";
+    const shouldRun = pathname === "/" || !hasRunInitial;
+    if (shouldRun) {
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("hasRunInitial", "true");
+      }
 
       let p = 0;
       const start = performance.now();
@@ -58,4 +58,3 @@ export default function Preloader() {
     </AnimatePresence>
   );
 }
-
